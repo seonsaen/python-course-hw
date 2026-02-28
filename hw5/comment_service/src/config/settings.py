@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,8 +82,8 @@ DATABASES = {
         'NAME': 'comments_db',
         'USER': 'postgres',
         'PASSWORD': 'postgres_password',
-        'HOST': '127.0.0.1',
-        'PORT': '5433',
+        'HOST': os.environ.get('POSTGRES_HOST', '127.0.0.1'),
+        'PORT': '5432',
     }
 }
 
