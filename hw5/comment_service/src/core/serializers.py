@@ -9,9 +9,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
-    author_id = serializers.PrimaryKeyRelatedField(
-        queryset=User.objects.all(), source='author', write_only=True
-    )
 
     class Meta:
         model = Post
@@ -19,9 +16,6 @@ class PostSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
-    author_id = serializers.PrimaryKeyRelatedField(
-        queryset=User.objects.all(), source='author', write_only=True
-    )
 
     class Meta:
         model = Comment
